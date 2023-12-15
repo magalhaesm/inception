@@ -1,0 +1,62 @@
+name: inception
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    build:
+      context: requirements/nginx
+    networks:
+      - inception
+    ports:
+      - 443:443
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - wordpress
+
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    build:
+      context: requirements/wordpress
+    environment:
+      - WP_DATABASE
+      - WP_USER
+      - WP_PASSWORD
+    networks:
+      - inception
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    build:
+      context: requirements/mariadb
+      args:
+        - WP_DATABASE
+        - WP_USER
+        - WP_PASSWORD
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
+
+networks:
+  inception:
+    name: inception
+
+volumes:
+  mariadb:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/marcelo/data/mariadb
+  wordpress:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/marcelo/data/wordpress

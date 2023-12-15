@@ -15,7 +15,7 @@ mkdir -p /run/php
 ln -s $(find /usr/sbin -name 'php-fpm*') /usr/bin/php-fpm
 EOF
 
-COPY tools/setup.sh /tmp/setup.sh
-RUN chmod +x /tmp/setup.sh
+COPY tools/entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
 
-ENTRYPOINT ["/tmp/setup.sh"]
+ENTRYPOINT ["/tmp/entrypoint.sh"]
