@@ -17,6 +17,12 @@ mkdir -p /run/php
 ln -s $(find /usr/sbin -name 'php-fpm*') /usr/bin/php-fpm
 EOF
 
+RUN <<EOF
+wget "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+chmod +x wp-cli.phar
+mv wp-cli.phar /usr/local/bin/wp
+EOF
+
 COPY tools/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
 
