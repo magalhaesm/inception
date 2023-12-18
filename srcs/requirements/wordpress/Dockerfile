@@ -5,6 +5,8 @@ WORKDIR /var/www/html/
 RUN <<EOF
 apt-get update -y && apt-get upgrade -y
 apt-get install wget php-fpm php-mysql -y
+apt-get clean
+rm -r /var/lib/apt/lists/*
 EOF
 
 RUN <<EOF
