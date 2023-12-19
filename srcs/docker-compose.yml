@@ -15,6 +15,7 @@ services:
       - wordpress:/var/www/html
     depends_on:
       - wordpress
+      - website
 
   wordpress:
     image: wordpress:42sp
@@ -60,6 +61,15 @@ services:
       - inception
     depends_on:
       - wordpress
+
+  website:
+    image: website:42sp
+    container_name: website
+    build: requirements/bonus/website
+    expose:
+      - 8080
+    networks:
+      - inception
 
 networks:
   inception:
