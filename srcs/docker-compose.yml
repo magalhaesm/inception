@@ -5,8 +5,7 @@ services:
   nginx:
     image: nginx:42sp
     container_name: nginx
-    build:
-      context: requirements/nginx
+    build: requirements/nginx
     networks:
       - inception
     ports:
@@ -20,8 +19,7 @@ services:
   wordpress:
     image: wordpress:42sp
     container_name: wordpress
-    build:
-      context: requirements/wordpress
+    build: requirements/wordpress
     environment:
        - DOMAIN
        - WP_TITLE
@@ -87,6 +85,25 @@ services:
       - 8081
     depends_on:
       - mariadb
+
+  ftp:
+    image: ftp:42sp
+    container_name: ftp
+    build:
+      context: requirements/bonus/ftp
+      args:
+        - FTP_USER
+        - FTP_PASS
+    networks:
+      - inception
+    ports:
+      - 20:20
+      - 21:21
+      - 42000-42005:42000-42005
+    volumes:
+      - wordpress:/home/vsftpd
+    depends_on:
+      - wordpress
 
 networks:
   inception:
