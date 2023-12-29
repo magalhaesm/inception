@@ -2,7 +2,8 @@ FROM debian:bullseye
 
 ARG LOGIN
 
-RUN apt-get update -y && apt-get upgrade -y \
+RUN apt-get update -y \
+&&  apt-get upgrade -y \
 &&  apt-get install nginx openssl -y
 
 RUN openssl req -batch -x509 \

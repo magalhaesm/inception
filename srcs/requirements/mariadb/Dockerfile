@@ -5,10 +5,9 @@ ARG WP_ADMIN_PASS
 ARG WP_DATABASE
 
 RUN <<EOF
-apt-get update -y && apt-get upgrade -y
+apt-get update -y
+apt-get upgrade -y
 apt-get install mariadb-server -y
-apt-get clean
-rm -r /var/lib/apt/lists/*
 EOF
 
 RUN echo "[mysqld] \n\
