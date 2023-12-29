@@ -5,8 +5,6 @@ WORKDIR /var/www/html/
 RUN <<EOF
 apt-get update -y && apt-get upgrade -y
 apt-get install wget php-fpm php-mysql -y
-apt-get clean
-rm -r /var/lib/apt/lists/*
 EOF
 
 RUN <<EOF
@@ -23,7 +21,9 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 EOF
 
-COPY tools/entrypoint.sh /tmp/entrypoint.sh
-RUN chmod +x /tmp/entrypoint.sh
+COPY tools/wp_setup.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/wp_setup.sh
 
-ENTRYPOINT ["/tmp/entrypoint.sh"]
+ENTRYPOINT ["wp_setup.sh"]
+
+CMD ["php-fpm", "-F"]
