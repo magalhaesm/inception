@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+
+    <!-- Also link to some fonts hosted by Google -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
+  </head>
+  <body>
+
+    <header>
+      <h1><a href='/'>Project Showcase</a></h1>
+      <p>Explore our Dockerized Infrastructure Project</p>
+    </header>
+
+    <section id="description">
+      <h2>Project Description</h2>
+      <p>
+        This project is a small infrastructure composed of different services, each running in its dedicated Docker container. The containers are built from the penultimate stable version of Alpine or Debian for performance reasons. The services include NGINX with TLSv1.2 or TLSv1.3, WordPress with php-fpm, and MariaDB. Volumes are used to store the WordPress database and website files, and a docker-network is established to connect the containers. All containers automatically restart in case of a crash.
+      </p>
+    </section>
+
+    <section id="mandatory">
+      <h2>Infrastructure Structure</h2>
+      <p>
+        The project consists of the following components:
+        <ul>
+          <li>NGINX Container with TLSv1.2 or TLSv1.3</li>
+          <li>WordPress + php-fpm Container</li>
+          <li>MariaDB Container</li>
+          <li>Volume for WordPress Database</li>
+          <li>Volume for WordPress Website Files</li>
+          <li>Docker Network for Inter-Container Communication</li>
+        </ul>
+      </p>
+    </section>
+
+    <section id="bonus">
+      <h2>Bonus Features</h2>
+      <p>
+        In addition to the main project, the following bonus features were included:
+        <ul>
+          <li>Set up Redis cache for your WordPress website</li>
+          <li>Set up an FTP server container pointing to the volume of your WordPress website</li>
+          <li>Create a simple static website in the language of your choice (excluding PHP)</li>
+          <li>Set up Adminer</li>
+          <li>Set up a service of your choice (justify your choice during the defense)</li>
+        </ul>
+      </p>
+    </section>
+
+    <figure>
+      <img src="https://mermaid.ink/img/pako:eNptk11v2jAUhv-K5YphNECJ4yROLiaNRqy7KEMrUqo1uzDEGxbERo5pyxD_fY4zWj7m3Bw_7_HxeZXjPVyoksMUdjp7IKQwKdiD7m_NNsuuCxdb_cxt2K2UVEZJ_tgFh-brdArp8sAsKySwK-dzhFCe571eryX1dt6m3H17mLXoDGdqseIaTLh5UXr1ntCsWx_dMy1YNupdCBjlSpdTzev64_RueikHaPLl6-TxEhM0nl3lhuhzWQnJ9aUQIeumFoZfCjG6ZeWzqNXVEYq-81LUJ5jL8j-mx2LN611teHVeIBs9oYwZNmc17_081_Lp07vpU_HtChcU0nYNBkOAfTAcWM9vgJDAkaCQt0EDEs_zHMFHQj3akuiKxCekrRxaghsSBF7kiH8kURAnjlBLfDAYfLLWnPjBduT2-bTptTa7NW-mBvwS63V6Q8bUH2X92mi14umNPyLjGP_bDl5EaZYp3rzCPqy4rpgo7dTuG_MFNEte8QKmNiyZHSRYyIPNY1ujHnZyAVOjt7wPt5uSGZ4JZn9EdYQbJmG6h68wjZOhj8OA4oj6BBOf9OEOpkE4pBQHmOLQp5Hnk0Mf_lHKnveGNInCJAlJSCgNKI1dtR9ObIvbgTBK37dPzL20w19JpupJ?type=png" alt="Diagram">
+      <figcaption>Complete Infrastructure Diagram</figcaption>
+    </figure>
+
+    <footer>
+      <p>&copy; 2024 Made by <a href='https://github.com/magalhaesm/'>Marcelo Magalhães</a>.</p>
+    </footer>
+
+  </body>
+</html>

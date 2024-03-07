@@ -124,6 +124,8 @@ services:
     privileged: true
     devices:
       - /dev/kmsg
+    depends_on:
+      - wordpress
 
 networks:
   inception:
