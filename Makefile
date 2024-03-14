@@ -9,7 +9,7 @@ VOLUMES = "/home/$(LOGIN)/data"
 #  Service Management
 
 up:
-	@ mkdir -p "$(VOLUMES)/wordpress" "$(VOLUMES)/mariadb"
+	@ sudo mkdir -p "$(VOLUMES)/wordpress" "$(VOLUMES)/mariadb"
 	@ $(DOCKER_COMPOSE) up -d --build
 
 down:
