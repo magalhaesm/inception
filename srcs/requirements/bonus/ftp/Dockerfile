@@ -4,11 +4,11 @@ ARG FTP_USER
 ARG FTP_PASS
 
 RUN apt-get update -y \
-&&  apt-get upgrade -y \
-&&  apt-get install -y vsftpd
+	&&  apt-get upgrade -y \
+	&&  apt-get install -y vsftpd
 
 RUN useradd --gid 0 -m "${FTP_USER}" -s /bin/bash \
-&&  echo "${FTP_USER}:${FTP_PASS}" | chpasswd
+	&&  echo "${FTP_USER}:${FTP_PASS}" | chpasswd
 
 COPY ./conf/vsftpd.conf /etc/vsftpd.conf
 COPY ./tools/init.sh /usr/local/bin/
